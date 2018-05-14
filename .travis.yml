@@ -2,10 +2,11 @@ language: java
 matrix:
   include:
     - jdk: oraclejdk8
-script: travis_retry ./gradlew clean headless nonGuiTests coverage coveralls -i
+script: xvfb-run make test && travis_retry ./gradlew clean headless allTests coverage coveralls -i
 before_install:
           - "export DISPLAY=:99.0"
           - "sh -e /etc/init.d/xvfb start"
+          - sleep 3 # give xvfb some time to start
 addons:
   apt:
     packages:
