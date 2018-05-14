@@ -6,7 +6,8 @@ script: travis_retry ./gradlew clean headless allTests coverage coveralls -i
 before_install:
           - "export DISPLAY=:99.0"
           - "sh -e /etc/init.d/xvfb start"
-
+after_failure:
+  cat $TRAVIS_TEST_RESULT
 addons:
   apt:
     packages:
