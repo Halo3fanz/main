@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
+//@@author A0144202Y
 /**
  * Lists all tasks that is not completed in the task manager to the user.
  */
@@ -45,6 +46,6 @@ public class ListCommand extends Command {
     		e.printStackTrace();
     	}
     	
-    	return new CommandResult(String.format(KEYWORD_TASKS_SUCCESS, model.getFilteredPersonList().size()) + keyword + ".");
+    	return new CommandResult(String.format(KEYWORD_TASKS_SUCCESS, model.getFilteredTaskList().size()) + keyword + ".");
     }
 }

@@ -19,10 +19,9 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
+//@@author A0139097U
 /**
  * Checks if tasks are overdue and repeats them if they are set to do so.
- * @author A0139097U
- *
  */
 public class UpdateCommand extends Command {
 
@@ -40,7 +39,7 @@ public class UpdateCommand extends Command {
 		Calendar cal = Calendar.getInstance();
 		List<Task> addList = new LinkedList();
 		List<Task> deleteList = new LinkedList();
-		ReadOnlyTaskManager taskmanager = model.getAddressBook();
+		ReadOnlyTaskManager taskmanager = model.getTaskManager();
 		Iterator<Task> it = taskmanager.getUniqueTaskList().iterator(); 
 		while(it.hasNext()){
 			Task task = it.next();
@@ -101,7 +100,7 @@ public class UpdateCommand extends Command {
 		for(Task modified: addList) {
 			assert model != null;
 	        try {
-	            model.addPerson(modified);
+	            model.addTask(modified);
 	        } catch (UniqueTaskList.DuplicateTaskException e) {
 	        }
 		}

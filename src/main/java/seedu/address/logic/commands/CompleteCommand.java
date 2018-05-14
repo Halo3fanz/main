@@ -24,15 +24,12 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
-//@@author A0144202Y
+//@@author A0139516B
 public class CompleteCommand extends Command {
 
 	public static final String COMMAND_WORD = "complete";
-	//@@author 
-	//@@author A0141812R
 	public static final String COMMAND_WORD_2 = "com"; //complete shortcut
-   //@@author 
-  //@@author A0144202Y
+ 
 	public static final String MESSAGE_USAGE = COMMAND_WORD
 			+ ": Complete the task identified by the index number used in the last task listing.\n"
 			+ "Parameters: INDEX (must be a positive integer)\n" + "Example: " + COMMAND_WORD + " 1";
@@ -88,7 +85,7 @@ public class CompleteCommand extends Command {
 
 	public CommandResult execute() {
 
-		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredPersonList();
+		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
 		if (lastShownList.size() < targetIndex) {
 			indicateAttemptToExecuteIncorrectCommand();
@@ -126,7 +123,7 @@ public class CompleteCommand extends Command {
 		toAdd.setOverdue(false);
 		assert model != null;
 		try {
-			model.addPerson(toAdd);
+			model.addTask(toAdd);
 			String point = String.format(MESSAGE_COMPLETE_TASK_SUCCESS, toAdd);
 			model.currentState(point);
 			return new CommandResult(point);
@@ -170,7 +167,7 @@ public class CompleteCommand extends Command {
 	private CommandResult addRepeatingTask() {
 		assert model != null;
 		try {
-			model.addPerson(toAdd);
+			model.addTask(toAdd);
 			String point = String.format(MESSAGE_COMPLETE_TASK_SUCCESS, toAdd);
 			model.currentState(point);
 			return new CommandResult(point);

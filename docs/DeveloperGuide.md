@@ -12,7 +12,7 @@
 * [Appendix D: Glossary](#appendix-d--glossary)
 * [Appendix E: Product Surveys](#appendix-e--product-surveys)
 
-
+<!--- @@author A0139516B -->
 ## Introduction
 
 This guide will allow you as a developer to obtain a better understanding of how 'The Practical Task Manager' functions. This task manager was designed based on two main principles, that the user would find it intuitive to use and simple to understand.
@@ -63,12 +63,13 @@ This guide will allow you as a developer to obtain a better understanding of how
 
 ## Design
 
+<!--- @@author A0141812R -->
 ### Architecture
 
 <img src="images/Architecture.png" width="600"><br>
 Figure 1: Architecture Diagram
 
-The **_Architecture Diagram_** given above explains the high-level design of the App.
+Figure 1 given above explains the high-level design of the App.
 Given below is a quick overview of each component.
 
 `Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
@@ -91,12 +92,12 @@ Each of the four components
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java`
+For example, the `Logic` component (see the Figure 2 given below) defines it's API in the `Logic.java`
 interface and exposes its functionality using the `LogicManager.java` class.<br>
 <img src="images/logicDiagram.png" width="800"><br>
 Figure 2: Logic Class Diagram
 
-The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
+Figure 3 below shows how the components interact for the scenario where the user issues the
 command `delete 3`.
 
 <img src="images/SDforDeleteTask.png" width="800">
@@ -105,7 +106,7 @@ Figure 3: Sequence Diagram For Delete Person
 >Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Address Book data are changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
-The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
+Figure 4 below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
 <img src="images/SDforDeleteTaskEventHandling.png" width="800">
 Figure 4: Sequence Diagram For Event Handling Of Delete Person
@@ -117,6 +118,7 @@ The sections below give more details of each component.
 
 <div style="page-break-after: always;"></div>
 
+<!--- @@author A0139097U -->
 ### UI component
 
 <img src="images/UIdiagram.png" width="800"><br>
@@ -138,11 +140,13 @@ The `UI` component,
 * Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
 * Responds to events raised from various parts of the App and updates the UI accordingly.
 
+<!--- @@author A0144202Y -->
 ### Logic component
 
 <img src="images/LogicClassDiagram.png" width="800"><br>
 Figure 6 : Logic Class Diagram
 
+<!--- @@author  A0139516B -->
 **API** : [`Logic.java`](../src/main/java/seedu/address/logic/Logic.java)
 
 * `Logic` uses the `Parser` class to parse the user command.
@@ -150,7 +154,7 @@ Figure 6 : Logic Class Diagram
 * The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
 * The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
+Figure 7 is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
 <img src="images/logicDiagram.png" width="800"><br>
 Figure 7: Sequence Diagram Within Logic For Delete Task
@@ -293,7 +297,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new task | determine what I should accomplish 
+`* * *` | user | add a new task | determine what I should accomplish
 `* * *` | user | know if any events clash | reschedule
 `* * *` | user | see all current tasks on the calendar | determine what I have to do over a longer period of time
 `* * *` | user | delete a task | remove entries that I no longer need
@@ -316,8 +320,8 @@ Priority | As a ... | I want to ... | So that I can...
 `*` | user | keep track of ideas and history | not forget ideas
 `*` | user | see the number of tasks completed at the end of the day | have a better understanding of my capabilities.
 
-//@@author A0139516B
-## Appendix B : Use Cases
+
+## Appendix B: Use Cases
 
 (For all use cases below, the **System** is the `TaskManager` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -395,7 +399,7 @@ Priority | As a ... | I want to ... | So that I can...
 > Use case resumes at step 2.
 
 
-## Appendix C : Non Functional Requirements
+## Appendix C: Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
 2. Should be able to hold 10000 tasks.
@@ -410,7 +414,7 @@ Priority | As a ... | I want to ... | So that I can...
 11. Should run on royalty free libraries and API's.
 
 
-## Appendix D : Glossary
+## Appendix D: Glossary
 
 ##### Mainstream OS
 
@@ -420,51 +424,11 @@ Priority | As a ... | I want to ... | So that I can...
 
 > Main Success Scenario
 
-## Appendix E : Product Survey's
+## Appendix E: Product Survey's
 
-### Google Calendar Quick Add
-
-**Strengths**
-
-1. Has an intuitive User Interface.
-2. Is able to have user shared schedules to accommodate for better planning.
-
-**Weaknesses**
-
-1. Indicates an event clashes but does not prevent you from creating the event.
-2. Unable to customize how events appear on your calendar.
-
-### Todoist
-
-**Strengths**
-
-1. Is able to access your tasks on over 10 different platforms.
-2. Has the ability to allow users to collaborate on shared tasks.
-
-**Weaknesses**
-
-1. Unable to allow user to set a location for the task.
-2. Has no web based capabilities.
-
-### dapulse
-
-**Strengths**
-
-1. Is able to customize labels for grouped tasks (in a column)
-2. Has a convenient inbuilt scheduling service.
-
-**Weaknesses**
-
-1. Unable to efficiently schedule simple tasks.
-
-### Things
-
-**Strengths**
-
-1. Has the ability to link tasks that fall under the same category.
-2. Has a Graphical User Interface that is intuitive and aesthetically pleasing.
-
-**Weaknesses**
-
-1. Is cost prohibitive.
-2. Is unavailable on certain platforms.
+Task Manager | Strengths | Weakness/es
+------------ | :-------- | :---------
+Google Calendar Quick Add | 1. Has an intuitive User Interface.<br> 2. Is able to have user shared schedules to accommodate for better planning. | 1. Has a cumbersome user interface. <br>2. Unable to customize how events appear on your calendar.
+Todoist | 1. Is able to access your tasks on over 10 different platforms. <br> 2. Has the ability to allow users to collaborate on shared tasks. | 1. Is unable to allow the user to set a venue for the task.<br> 2. Has no web based capabilities.
+dapulse | 1. Has an aesthetically appealing and responsive interface.<br> 2. Has an accessible tutorial built in for new users. | 1. Has weak project and task management tools.<br> 2. Is cost prohibitive.
+Things | 1. Has the ability to link tasks that fall under the same category.<br> 2. Has a Graphical User Interface that is intuitive and aesthetically pleasing. | 1. Is cost prohibitive.<br> 2. Is unavailable on certain platforms.

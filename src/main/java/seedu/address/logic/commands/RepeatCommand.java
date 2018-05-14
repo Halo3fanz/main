@@ -18,9 +18,11 @@ import seedu.address.model.task.Startline;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
+
+//@@author A0139097U
 /**
  * Sets whether or not a task repeats itself in intervals
- * @author A0139097U
+
  *
  */
 public class RepeatCommand extends Command{
@@ -53,7 +55,7 @@ public class RepeatCommand extends Command{
 	@Override
 	public CommandResult execute(){
 		
-		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredPersonList();
+		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
         if (lastShownList.size() < targetIndex) {
             indicateAttemptToExecuteIncorrectCommand();
@@ -112,7 +114,7 @@ public class RepeatCommand extends Command{
         deleteTask(taskToDelete);
         addTask(toAdd);
         String point = String.format(MESSAGE_SUCCESS + toAdd.getRepeating().getRepeating());
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(model.getFilteredPersonList().size() - 1));
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(model.getFilteredTaskList().size() - 1));
 		model.currentState(point);
         return new CommandResult(point);
 	}
@@ -146,7 +148,7 @@ public class RepeatCommand extends Command{
 	private void addTask(Task task){
 		assert model != null;
         try {
-            model.addPerson(toAdd);
+            model.addTask(toAdd);
         } catch (UniqueTaskList.DuplicateTaskException e) {
         }
 	}

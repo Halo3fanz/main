@@ -13,7 +13,8 @@ import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 import java.util.HashSet;
 import java.util.Set;
-//@@author A0139097U @@author A0144202Y
+
+//@@author A0141812R
 public class EditCommand extends Command {
 
 	public static final String COMMAND_WORD = "edit";
@@ -51,7 +52,7 @@ public class EditCommand extends Command {
 
 	@Override
 	public CommandResult execute()  {
-		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredPersonList();
+		UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
         if (lastShownList.size() < targetIndex) {
             indicateAttemptToExecuteIncorrectCommand();
@@ -95,7 +96,7 @@ public class EditCommand extends Command {
         	}
         }
 
-        if (this.priority.toString() == ""){
+        if (this.priority.toString() == "0"){
         	String priorityEdit = taskToDelete.getPriority().toString();
 
         	try {
@@ -109,10 +110,10 @@ public class EditCommand extends Command {
 
         assert model != null;
         try {
-            model.addPerson(toAdd);
+            model.addTask(toAdd);
             String point = String.format(MESSAGE_EDIT_TASK_SUCCESS, toAdd);
             model.currentState(point);
-	    EventsCenter.getInstance().post(new JumpToListRequestEvent(model.getFilteredPersonList().size() - 1));
+	    EventsCenter.getInstance().post(new JumpToListRequestEvent(model.getFilteredTaskList().size() - 1));
             return new CommandResult(point);
         } catch (UniqueTaskList.DuplicateTaskException e) {
             return new CommandResult(MESSAGE_DUPLICATE_TASK);

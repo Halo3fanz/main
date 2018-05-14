@@ -2,11 +2,10 @@ package seedu.address.logic.commands;
 
 import java.util.Set;
 
+//@@author A0144202Y
 /**
  * Finds and lists all tasks in task manager whose name contains any of the argument keywords.
  * Keyword matching is case sensitive.
- * 
- * @@author A0144202Y
  */
 public class FindCommand extends Command {
 
@@ -26,8 +25,8 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        model.updateFilteredPersonList(keywords);
-        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+        model.updateFilteredTaskList(keywords);
+        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredTaskList().size()));
     }
 
 }

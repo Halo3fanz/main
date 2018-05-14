@@ -1,9 +1,8 @@
 package seedu.address.logic.commands;
 
+//@@author A0144202Y 
 /**
  * This class allows the program to group up and sort tasks/events by their tags
- * 
- * @@author A0144202Y
  */
 
 public class ListtagCommand extends Command{
@@ -23,8 +22,8 @@ public class ListtagCommand extends Command{
 
     @Override
     public CommandResult execute() {
-        model.updateFilteredPersonGroup(keywords);
-        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+        model.updateFilteredTaskGroup(keywords);
+        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredTaskList().size()));
     }
 
 }

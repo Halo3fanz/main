@@ -35,6 +35,7 @@ public class Parser {
                     + "(?<priority>(?: p/[^/]+)*)"
                     + "(?<tagArguments>(?: t/[^/]+)*)"); // variable number of tags
     
+    //@@author A0141812R
     private static final Pattern EDIT_DATA_ARGS_FORMAT = // '/' forward slashes are reserved for delimiter prefixes
             Pattern.compile("(?<targetIndex>[^/]+)"
             		+ "(?<name>(?: n/[^/]+)*)" //only name is compulsory
@@ -356,7 +357,8 @@ public class Parser {
             return new IncorrectCommand(ive.getMessage());
         }
     }
-    
+    //@@author
+    //@@A0139097U
     private String getNameFromArgs(String args) {
     	if (args.isEmpty()) {
             return "0";
