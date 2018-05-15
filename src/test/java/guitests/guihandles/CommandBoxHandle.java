@@ -31,7 +31,7 @@ public class CommandBoxHandle extends GuiHandle{
         pressEnter();
         // TODO: Ensure it only clicks the desired button
         if(command == "clear") {
-        	guiRobot.clickOn(".button");
+        	guiRobot.clickOn("OK");
         }
         guiRobot.sleep(200); //Give time for the command to take effect
     }
